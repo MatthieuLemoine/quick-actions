@@ -10,4 +10,4 @@ yarn
 
 ## Features
 
-* Open projects in Atom
+* Open projects in your favorite editor.
