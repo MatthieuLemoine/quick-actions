@@ -21,7 +21,13 @@ app.on('ready', async () => {
     const actions = (await readDir(ACTIONS_DIR)).map(action =>
       require(path.join(ACTIONS_DIR, action)),
     );
-    const template = await Promise.all(actions.map(getAction => getAction(config)));
+    // Get custom actions
+    const customActions = (await readDir(config.actionsDir)).map(action =>
+      require(path.join(config.actionsDir, action)),
+    );
+    const template = await Promise.all(
+      [...customActions, ...actions].map(getAction => getAction(config)),
+    );
     const contextMenu = Menu.buildFromTemplate([
       ...template,
       { type: 'separator' },

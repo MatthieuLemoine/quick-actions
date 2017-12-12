@@ -1,7 +1,7 @@
 {
   "name": "quick-actions",
   "version": "1.0.0",
-  "description": "A macOS/Linux menubar app to execute quick actions.",
+  "description": "A extensible macOS/Linux menubar app to execute quick actions.",
   "main": "index.js",
   "repository": "git@github.com:MatthieuLemoine/quick-actions",
   "author": "MatthieuLemoine",
