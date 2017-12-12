@@ -15,4 +15,4 @@ if (!fs.existsSync(CONFIG_FILE)) {
   fs.writeFileSync(CONFIG_FILE, fs.readFileSync(DEFAULT_CONFIG_FILE));
 }
 
-module.exports = Object.assign({}, defaultConfig, require(CONFIG_FILE));
+module.exports = Object.assign({ CONFIG_FILE }, defaultConfig, require(CONFIG_FILE));

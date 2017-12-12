@@ -1,6 +1,6 @@
 # :zap: Quick Actions
 
-A macOS menubar app to execute quick actions.
+A macOS/Linux menubar app to execute quick actions.
 
 ## Install
 
@@ -10,7 +10,7 @@ yarn
 
 ## Configuration
 
-The configuration can be found in `HOME_DIR/.quick-actions/config.js`.
+The configuration can be found in `$HOME_DIR/.quick-actions/config.js`.
 
 ```javascript
 // Default configuration
@@ -30,9 +30,9 @@ module.exports = {
 };
 ```
 
-- editor : your favorite editor.
-- projectDirs : where to look for your projects.
-- filterProjects : a function called to hide some files/folders.
+- `editor` : your favorite editor.
+- `projectDirs` : where to look for your projects.
+- `filterProjects` : a function called to hide some files/folders.
 
 ## Features
 

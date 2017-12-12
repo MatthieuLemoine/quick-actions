@@ -3,6 +3,7 @@ const fs = require('fs');
 const { Tray, Menu, app } = require('electron');
 const { promisify } = require('util');
 const config = require('./config');
+const { exec } = require('child_process');
 
 const readDir = promisify(fs.readdir);
 
@@ -35,6 +36,11 @@ app.on('ready', async () => {
           },
         ],
       },
+      {
+        label: 'Configuration',
+        type: 'normal',
+        click: () => openInEditor(config.editor || 'atom', config.CONFIG_FILE),
+      },
       { role: 'quit', label: 'Close' },
     ]);
     tray.setToolTip('Quick actions');
@@ -48,4 +54,8 @@ function toggleOpenAtLogin(e) {
   return app.setLoginItemSettings({
     openAtLogin: e.checked,
   });
+}
+
+function openInEditor(editor, projectPath) {
+  return exec(`atom ${projectPath}`);
 }
