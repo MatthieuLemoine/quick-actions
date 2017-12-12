@@ -2,13 +2,16 @@ const path = require('path');
 const fs = require('fs');
 const { Tray, Menu, app } = require('electron');
 const { promisify } = require('util');
+const config = require('./config');
 
 const readDir = promisify(fs.readdir);
 
 const ACTIONS_DIR = path.join(__dirname, 'actions');
 
 // Don't show app in macOS dock
-app.dock.hide();
+if (app.dock) {
+  app.dock.hide();
+}
 
 app.on('ready', async () => {
   try {
@@ -17,7 +20,7 @@ app.on('ready', async () => {
     const actions = (await readDir(ACTIONS_DIR)).map(action =>
       require(path.join(ACTIONS_DIR, action)),
     );
-    const template = await Promise.all(actions.map(getAction => getAction()));
+    const template = await Promise.all(actions.map(getAction => getAction(config)));
     const contextMenu = Menu.buildFromTemplate([
       ...template,
       { type: 'separator' },
