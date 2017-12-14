@@ -17,7 +17,9 @@
     "prettier-eslint-cli": "^4.4.2"
   },
   "dependencies": {
-    "electron": "^1.8.2-beta.3"
+    "auto-launch": "^5.0.5",
+    "electron": "^1.8.2-beta.3",
+    "electron-gh-releases": "^2.0.4"
   },
   "scripts": {
     "start": "NODE_ENV=production electron src/index.js"
